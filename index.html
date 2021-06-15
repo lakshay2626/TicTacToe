@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript">
+    var grid = [3];
+    grid[0] = [-1,-1,-1];
+    grid[1] = [-1,-1,-1];
+    grid[2] = [-1,-1,-1];
+    //var gr = [];
+    var flag="0";
+
+        function Select(id){
+            document.getElementById(id).value = flag;
+            SelectGrid(id);
+            if(flag == "0")
+            flag="X";
+            else
+            flag = "0"; 
+        }
+
+        function SelectGrid(id)
+        { 
+            //alert(fl);
+            if(flag == "0") gridval = 0;
+            else gridval = 1;
+
+            if(id == "1")
+            {
+                grid[0][0] = gridval;
+                check(0,0);
+            }
+            
+            else if(id == "2")
+            {
+                grid[0][1] = gridval;
+                check(0,1);
+            }
+            
+            else if(id == "3")
+            {
+                grid[0][2] = gridval;
+                check(0,2);
+            }
+           
+            else if(id == "4")
+            {
+                grid[1][0] = gridval;
+                check(1,0);
+            }
+            
+            else if(id == "5")
+            {
+                grid[1][1] = gridval;
+                check(1,1);
+            }
+            
+            else if(id == "6")
+            {
+                grid[1][2] = gridval;
+                check(1,2);
+            }
+            
+            else if(id == "7")
+            {
+                grid[2][0] = gridval;
+                check(2,0);
+            }
+            
+            else if(id == "8")
+            {
+                grid[2][1] = gridval;
+                check(2,1);
+            }
+            
+            else if(id == "9")
+            {
+                grid[2][2] = gridval;
+                check(2,2);
+            }
+            
+            
+        }
+
+        function check(x,y)
+        {
+            var count = 0;
+          
+            //horizontally check
+            var c = grid[x][y];
+            for(var i = 0; i<3; i++)
+            {
+                if( grid[x][i] == c)
+                count++;
+            }
+            if(count == 3)
+            {
+                alert(flag+" wins");
+            }
+           
+            //vertically check
+            count =0;
+            for(var i = 0; i<3; i++)
+            {
+                if( grid[i][y] == c)
+                count++;
+            }
+            if(count == 3)
+            {
+                alert(flag + " wins");
+            }
+
+            //diagonally check
+            count =0;
+            for(var i = 0; i<3; i++)
+            {
+                if( grid[i][i] == c)
+                count++;
+            }
+            if(count == 3)
+            {
+                alert(flag + " wins");
+            }
+            count = 0;
+            for(var i = 0, j=2; i<3, j>-1; i++,j--)
+            {
+                if( grid[i][j] == c)
+                count++;
+            }
+            if(count == 3)
+            {
+                alert(flag + " wins");
+            }
+          //alert(grid[x][y]);
+          
+        }
+
+    </script>
+</head>
+<body>
+
+     <input type="button" id="1" onclick="Select(1)">
+
+     <input type="button" id="2" onclick="Select(2)">
+
+     <input type="button" id="3" onclick="Select(3)"><br>
+     <input type="button" id="4" onclick="Select(4)">
+     <input type="button" id="5" onclick="Select(5)">
+     <input type="button" id="6" onclick="Select(6)"><br>
+     <input type="button" id="7" onclick="Select(7)">
+     <input type="button" id="8" onclick="Select(8)">
+     <input type="button" id="9" onclick="Select(9)">
+    
+</body>
+</html>
